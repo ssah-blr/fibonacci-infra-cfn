@@ -1,0 +1,48 @@
+trigger:
+- main
+
+pool:
+  name: 'mac-self' # Specifies your agent pool
+
+variables:
+  - group: AWS # Include the variable group
+  - name: STACK_NAME
+    value: 'dev-eks-stack'
+  - name: REGION
+    value: 'ap-south-1'
+  - name: TEMPLATE_FILE
+    value: './devops/cloudformation/private-eks-cluster.yaml'
+  - name: PARAMS_FILE
+    value: './devops/environments/dev-parameters.json'
+
+stages:
+
+- stage: Deploy
+  displayName: 'Deploy CloudFormation Stack'
+  jobs:
+  - job: DeployStack
+    displayName: 'Deploy CloudFormation Stack'
+    steps:
+    # Step 1: Debug Variables
+    - script: |
+        echo "AWS Service Connection: AWS-Toolkit"
+        echo "Stack Name: $(STACK_NAME)"
+        echo "Region: $(REGION)"
+        echo "Template File: $(TEMPLATE_FILE)"
+        echo "Parameters File: $(PARAMS_FILE)"
+      displayName: 'Verify Variables'
+
+    # Step 2: Deploy Stack
+    - task: CloudFormationCreateOrUpdateStack@1
+      displayName: 'Deploy CloudFormation Stack'
+      inputs:
+        awsCredentials: 'AWS-Toolkit'
+        regionName: $(REGION)
+        stackName: $(STACK_NAME)
+        useChangeSet: true
+        changeSetName: "$(STACK_NAME)-change-set"
+        templateFile: $(TEMPLATE_FILE)
+        templateParametersFile: $(PARAMS_FILE)
+        captureStackOutputs: asVariables
+        captureAsSecuredVars: true
+

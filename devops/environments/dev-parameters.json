@@ -1,0 +1,50 @@
+[
+    {
+        "ParameterKey": "AWSAccountId",
+        "ParameterValue": ""
+    },
+    {
+        "ParameterKey": "VPCId",
+        "ParameterValue": "vpc-"
+    },
+    {
+        "ParameterKey": "SubnetIds",
+        "ParameterValue": "subnet-,subnet-"
+    },
+    {
+        "ParameterKey": "Region",
+        "ParameterValue": "ap-south-1"
+    },
+    {
+        "ParameterKey": "ClusterName",
+        "ParameterValue": "dev-eks-cluster"
+    },
+    {
+        "ParameterKey": "NodeGroupName",
+        "ParameterValue": "dev-node-group"
+    },
+    {
+        "ParameterKey": "NodeInstanceType",
+        "ParameterValue": "t2.small"
+    },
+    {
+        "ParameterKey": "NodeGroupMinSize",
+        "ParameterValue": "2"
+    },
+    {
+        "ParameterKey": "NodeGroupMaxSize",
+        "ParameterValue": "4"
+    },
+    {
+        "ParameterKey": "NodeGroupDesiredSize",
+        "ParameterValue": "2"
+    },
+    {
+        "ParameterKey": "VpnNetwork",
+        "ParameterValue": "10.1.0.0/16"
+    },
+    {
+        "ParameterKey": "VpcCidr",
+        "ParameterValue": "10.0.0.0/16"
+    }
+]

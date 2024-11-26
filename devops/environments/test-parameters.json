@@ -1,0 +1,13 @@
+{
+    "AWSAccountId": "123456789012",
+    "VPCId": "vpc-0abcd1234efgh5678",
+    "SubnetIds": ["subnet-0abcd1234", "subnet-1abcd1234"],
+    "Region": "us-east-1",
+    "ClusterName": "test-eks-cluster",
+    "NodeGroupName": "test-node-group",
+    "NodeInstanceType": "t3.medium",
+    "NodeGroupMinSize": 2,
+    "NodeGroupMaxSize": 4,
+    "NodeGroupDesiredSize": 2
+  }
+  
